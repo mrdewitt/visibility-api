@@ -5,15 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Visibility-api by mrdewitt</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
-    <div id="foo" style="position: absolute; top:0px; bottom:0px; left: 0px; right:0px;"></div>
+    <div id="foo" style="position: absolute; top:0px; bottom:0px; left: 0px; right:0px; text-align: center; font-family: monospace; font-size: 24pt; color: black;"></div>
             
     <script lang="javascript">
 
@@ -28,8 +26,12 @@ function setBGColor() {
     case "unloaded": color = "black"; break;
   }
 
-  if (bad || color && !document.querySelector("#foo").style.backgroundColor) {
-    document.querySelector("#foo").style.backgroundColor = color;
+  var div = document.querySelector("#foo");
+  div.innerHTML += "<hr>" + new Date().toISOString() + " visibilityState: " + document.visibilityState;
+
+
+  if (bad || color && !div.style.backgroundColor) {
+    div.style.backgroundColor = color;
   }
 }
 
